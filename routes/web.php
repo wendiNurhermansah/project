@@ -38,4 +38,18 @@ Route::prefix('MasterRole')->namespace('masterRole')->name('MasterRole.')->group
     Route::post('{id}/updatePassword', 'PenggunaController@updatePassword')->name('updatePassword');
 });
 
+Route::prefix('Perusahaan')->namespace('perusahaan')->name('Perusahaan.')->group(function(){
+    // customer
+    Route::resource('customer', 'CustomerController');
+    Route::post('customer/api', 'CustomerController@api')->name('customer.api');
+    Route::get('kabupatenByProvinsi/{id}', 'CustomerController@kabupatenByProvinsi')->name('kabupatenByProvinsi');
+    Route::get('kecamatanByKabupaten/{id}', 'CustomerController@kecamatanByKabupaten')->name('kecamatanByKabupaten');
+    Route::get('kelurahanByKecamatan/{id}', 'CustomerController@kelurahanByKecamatan')->name('kelurahanByKecamatan');
+
+    // jenis_barang
+    Route::resource('Jenis_Barang', 'JenisBarangController');
+    Route::post('Jenis_Barang/api', 'JenisBarangController@api')->name('Jenis_Barang.api');
+
+});
+
 

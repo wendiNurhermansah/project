@@ -25,4 +25,24 @@
         <i class="icon icon-angle-right s-18 pull-right"></i>
         </a>
     </li>
+
+    <li class="header light"><strong>PERUSAHAAN</strong></li>
+    <li>
+        <a href="{{route('Perusahaan.customer.index')}}">
+            <i class="icon icon-users amber-text s-18"></i> <span>Custumer</span>
+            <i class="icon icon-angle-right s-18 pull-right"></i>
+        </a>
+    </li>
+    <li class="no-b">
+        <a href="{{route('Perusahaan.Jenis_Barang.index')}}">
+            <i class="icon icon-list2 text-success s-18"></i> <span>Jenis Barang</span>
+            <i class="icon icon-angle-right s-18 pull-right"></i>
+        </a>
+    </li>
+    <li>
+        <a href="{{route('MasterRole.pengguna.index')}}"><i class="icon icon-shop blue-text s-18"></i>
+        <span>Pesanan</span>
+        <i class="icon icon-angle-right s-18 pull-right"></i>
+        </a>
+    </li>
 </ul>
