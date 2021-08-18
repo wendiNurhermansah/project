@@ -55,6 +55,10 @@ Route::prefix('Perusahaan')->namespace('perusahaan')->name('Perusahaan.')->group
     Route::resource('Jenis_Barang', 'JenisBarangController');
     Route::post('Jenis_Barang/api', 'JenisBarangController@api')->name('Jenis_Barang.api');
 
+    // Pesanan
+    Route::resource('Pesanan', 'PesananController');
+
+
 });
 
 

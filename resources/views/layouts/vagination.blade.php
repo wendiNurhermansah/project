@@ -40,7 +40,7 @@
         </a>
     </li>
     <li>
-        <a href="{{route('MasterRole.pengguna.index')}}"><i class="icon icon-shop blue-text s-18"></i>
+        <a href="{{route('Perusahaan.Pesanan.index')}}"><i class="icon icon-shop blue-text s-18"></i>
         <span>Pesanan</span>
         <i class="icon icon-angle-right s-18 pull-right"></i>
         </a>
