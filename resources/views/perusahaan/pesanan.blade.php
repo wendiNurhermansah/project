@@ -72,21 +72,69 @@
                                     <div class="form-row form-inline">
                                         <div class="col-md-8">
                                             <div class="form-group m-0">
-                                                <label for="nama_barang" class="col-form-label s-12 col-md-2">Nama Pemesan</label>
-                                                <input type="text" name="nama_barang" id="nama_barang" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
+                                                <label for="nama_pemesan" class="col-form-label s-12 col-md-2">Nama Pemesan</label>
+                                                <input type="text" name="nama_pemesan" id="nama_pemesan" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
                                             <div class="form-group mt-3">
-                                                <label for="harga_beli" class="col-form-label s-12 col-md-2">Jenis Pesanan</label>
+                                                <label for="" class="col-form-label s-12 col-md-2">Jenis Pesanan</label>
                                                 
                                             </div>
+                                            <div class="form-group mt-3">
+                                                <label for="" class="col-form-label s-12 col-md-2"></label>
+                                                <div class="col-md-10">
+                                                    <table id="dinamic" class="table table-striped table-bordered" style="width:100%">
+                                                        <thead class="text-center">
+                                                            <th>Tambah</th>
+                                                            <th width="30">No</th>
+                                                            <th>JENIS PESANAN</th>
+                                                            <th>HARGA</th>
+                                                            <th>JUMLAH</th>
+                                                            <th>TOTAL</th>
+                                                            <th>KETERANGAN</th>
+                                                            
+                                                        </thead>
+                                                        <tbody>
+                                                            @php 
+                                                             $a = 1;
+                                                            @endphp
+                                                            <tr>
+                                                                <td class="text-center" ><i class="icon icon-plus text-success" id="tambah"></i></td>
+                                                                <td>{{$a++}}</td>
+                                                                <td>
+                                                                    <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" autocomplete="off">
+                                                                        <option value="">Pilih</option>
+                                                                        @foreach ($barang as $item)
+                                                                            <option value="{{$item->id}}">{{$item->nama_barang}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="harga[]" id="harga" autocomplete="off" />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="jumlah[]" id="jumlah" autocomplete="off" />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="total[]" id="total" autocomplete="off" />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="keterangan[]" id="keterangan" autocomplete="off" />    
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>    
+                                            </div>
+
                                            
                                             <div class="form-group mt-3">
-                                                <label for="harga_jual" class="col-form-label s-12 col-md-2">Tanggal Pesanan</label>
-                                                <input type="date" name="harga_jual" id="harga_jual" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
+                                                <label for="tanggal" class="col-form-label s-12 col-md-2">Tanggal Pesanan</label>
+                                                <input type="date" name="tanggal" id="tanggal" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
                                             <div class="form-group mt-3">
-                                                <label for="nama_barang" class="col-form-label s-12 col-md-2">Alamat</label>
-                                                <input type="text" name="nama_barang" id="nama_barang" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
+                                                <label for="alamat" class="col-form-label s-12 col-md-2">Alamat</label>
+                                                <input type="text" name="alamat" id="alamat" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
                                             
                                             <div class="mt-4" style="margin-left: 17%">
@@ -127,55 +175,85 @@
 
    
 
-    
+    $(document).ready(function(){
+        var i = 1;
+        $('#tambah').click(function(){
+            i++;
+            $('#dinamic').append(`<tr>
+                                                                <td class="text-center" ></td>
+                                                                <td>`+ i +`</td>
+                                                                <td>
+                                                                    <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" autocomplete="off">
+                                                                        <option value="">Pilih</option>
+                                                                        @foreach ($barang as $item)
+                                                                            <option value="{{$item->id}}">{{$item->nama_barang}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="harga[]" id="harga" autocomplete="off" />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="jumlah[]" id="jumlah" autocomplete="off" />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="total[]" id="total" autocomplete="off" />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name="keterangan[]" id="keterangan" autocomplete="off" />    
+                                                                </td>
+                                                                
+                                                            </tr>`);
+        });
+    });
 
-    // function add(){
-    //     save_method = "add";
-    //     $('#form').trigger('reset');
-    //     $('#formTitle').html('Tambah Data');
-    //     $('input[name=_method]').val('POST');
-    //     $('#txtAction').html('');
-    //     $('#reset').show();
-    //     $('#preview').attr({ 'src': '-', 'alt': ''});
-    //     $('#changeText').html('Browse Image')
-    //     $('#username').focus();
-    // }
+    function add(){
+        save_method = "add";
+        $('#form').trigger('reset');
+        $('#formTitle').html('Tambah Data');
+        $('input[name=_method]').val('POST');
+        $('#txtAction').html('');
+        $('#reset').show();
+        $('#preview').attr({ 'src': '-', 'alt': ''});
+        $('#changeText').html('Browse Image')
+        $('#username').focus();
+    }
 
-    // $('#form').on('submit', function (e) {
-    //     if ($(this)[0].checkValidity() === false) {
-    //         event.preventDefault();
-    //         event.stopPropagation();
-    //     }
-    //     else{
-    //         $('#alert').html('');
-    //         url = "{{ route('Perusahaan.Jenis_Barang.store') }}",
-    //         $.ajax({
-    //             url : url,
-    //             type : 'POST',
-    //             data: new FormData(($(this)[0])),
-    //             contentType: false,
-    //             processData: false,
-    //             success : function(data) {
-    //                 console.log(data);
-    //                 $('#alert').html("<div role='alert' class='alert alert-success alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button><strong>Success!</strong> " + data.message + "</div>");
-    //                 table.api().ajax.reload();
-    //                 add();
-    //             },
-    //             error : function(data){
-    //                 err = '';
-    //                 respon = data.responseJSON;
-    //                 if(respon.errors){
-    //                     $.each(respon.errors, function( index, value ) {
-    //                         err = err + "<li>" + value +"</li>";
-    //                     });
-    //                 }
-    //                 $('#alert').html("<div role='alert' class='alert alert-danger alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button><strong>Error!</strong> " + respon.message + "<ol class='pl-3 m-0'>" + err + "</ol></div>");
-    //             }
-    //         });
-    //         return false;
-    //     }
-    //     $(this).addClass('was-validated');
-    // });
+    $('#form').on('submit', function (e) {
+        if ($(this)[0].checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        else{
+            $('#alert').html('');
+            url = "{{ route('Perusahaan.Pesanan.store') }}",
+            $.ajax({
+                url : url,
+                type : 'POST',
+                data: new FormData(($(this)[0])),
+                contentType: false,
+                processData: false,
+                success : function(data) {
+                    console.log(data);
+                    $('#alert').html("<div role='alert' class='alert alert-success alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button><strong>Success!</strong> " + data.message + "</div>");
+                    table.api().ajax.reload();
+                    add();
+                },
+                error : function(data){
+                    err = '';
+                    respon = data.responseJSON;
+                    if(respon.errors){
+                        $.each(respon.errors, function( index, value ) {
+                            err = err + "<li>" + value +"</li>";
+                        });
+                    }
+                    $('#alert').html("<div role='alert' class='alert alert-danger alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button><strong>Error!</strong> " + respon.message + "<ol class='pl-3 m-0'>" + err + "</ol></div>");
+                }
+            });
+            return false;
+        }
+        $(this).addClass('was-validated');
+    });
 
     // function remove(id){
     //     $.confirm({

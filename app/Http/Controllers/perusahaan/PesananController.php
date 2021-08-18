@@ -4,7 +4,11 @@ namespace App\Http\Controllers\perusahaan;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Jenis_pesanan;
 use DataTables;
+use App\Models\JenisBarang;
+use App\Models\Pesanan;
+use PhpParser\Node\Stmt\Foreach_;
 
 class PesananController extends Controller
 {
@@ -15,7 +19,8 @@ class PesananController extends Controller
      */
     public function index()
     {
-        return view('perusahaan.pesanan');
+        $barang = JenisBarang::all();
+        return view('perusahaan.pesanan', compact('barang'));
     }
 
     /**
@@ -36,7 +41,37 @@ class PesananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+                'nama_pemesan' => 'required',
+                'tanggal' => 'required',
+                'keterangan' => 'required',
+                'harga' => 'required',
+                'jumlah' => 'required',
+                'total' => 'required',
+                'alamat' => 'required'
+
+            ]);
+
+        $pesanan = new Pesanan();
+        $pesanan-> nama_pemesan = $request->nama_pemesan;
+        $pesanan-> tanggal = $request->tanggal;
+        $pesanan-> alamat = $request->alamat;
+        $pesanan->save();
+
+        foreach($request->jenis_pesanan as $key => $jenis_pesanan){
+        $jenis_pesanan = new Jenis_pesanan();
+        
+        $jenis_pesanan-> id_pesanan = $pesanan->id;
+        $jenis_pesanan-> jenis_pesanan = $request->jenis_pesanan[$key];
+        $jenis_pesanan-> harga = $request->harga[$key];
+        $jenis_pesanan-> jumlah = $request->jumlah[$key];
+        $jenis_pesanan-> total = $request->total[$key];
+        $jenis_pesanan-> keterangan = $request->keterangan[$key];
+        $jenis_pesanan->save();
+        }
+        return response()->json([
+            'message' => 'Data Berhasil di tambahkan.'
+        ]);
     }
 
     /**
