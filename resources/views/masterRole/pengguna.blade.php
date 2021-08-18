@@ -65,7 +65,7 @@
                                                 <label for="username" class="col-form-label s-12 col-md-2">Username</label>
                                                 <input type="text" name="username" id="username" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group mt-3">
                                                 <label class="col-form-label s-12 col-md-2">Role</label>
                                                 <div class="col-md-6 p-0 bg-light">
                                                     <select class="select2 form-control r-0 light s-12" name="role_id" id="role_id" autocomplete="off">
@@ -76,20 +76,20 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group m-t-5">
+                                            <div class="form-group mt-3">
                                                 <label for="password" class="col-form-label s-12 col-md-2">Password</label>
                                                 <input type="password" name="password" id="password" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
-                                            <div class="form-group m-0">
+                                            <div class="form-group mt-3">
                                                 <label for="nama" class="col-form-label s-12 col-md-2">Nama</label>
                                                 <input type="text" name="nama" id="nama" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
-                                            <div class="form-group m-0">
+                                            <div class="form-group mt-3">
                                                 <label for="email" class="col-form-label s-12 col-md-2">Email</label>
                                                 <input type="email" name="email" id="email" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
                                             </div>
 
-                                            <div class="form-group m-0">
+                                            <div class="form-group mt-3">
                                                 <label class="col-form-label s-12 col-md-2"></label>
                                                 <img width="150" class="rounded img-fluid mt-2" id="preview" alt=""/>
                                             </div>
@@ -192,7 +192,7 @@
                     keys: ['enter'],
                     action: function(){
                         $.post("{{ route('MasterRole.pengguna.destroy', ':id') }}".replace(':id', id), {'_method' : 'DELETE'}, function(data) {
-                           table.api().ajax.location.reload();
+                           table.api().ajax.reload();
                             if(id == $('#id').val()) add();
                         }, "JSON").fail(function(){
                             location.reload();

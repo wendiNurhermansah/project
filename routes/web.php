@@ -1,6 +1,8 @@
 <?php
+use App\Http\Controllers\PagesController;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'DashboardController@index');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::prefix('MasterRole')->namespace('masterRole')->name('MasterRole.')->group(function(){
     //role
@@ -51,5 +56,7 @@ Route::prefix('Perusahaan')->namespace('perusahaan')->name('Perusahaan.')->group
     Route::post('Jenis_Barang/api', 'JenisBarangController@api')->name('Jenis_Barang.api');
 
 });
+
+
 
 
