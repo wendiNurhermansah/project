@@ -12,4 +12,8 @@ class Jenis_pesanan extends Model
     public function pesanan(){
         return $this->belongsTo(Pesanan::class, 'id_pesanan');
     }
+
+    public function barang(){
+        return $this->belongsTo(JenisBarang::class, 'jenis_pesanan');
+    }
 }

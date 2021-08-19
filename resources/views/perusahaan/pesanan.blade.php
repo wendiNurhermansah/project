@@ -85,7 +85,7 @@
                                                     <table id="dinamic" class="table table-striped table-bordered" style="width:100%">
                                                         <thead class="text-center">
                                                             <th>Tambah</th>
-                                                            <th width="30">No</th>
+                                                           
                                                             <th>JENIS PESANAN</th>
                                                             <th>HARGA</th>
                                                             <th>JUMLAH</th>
@@ -93,13 +93,11 @@
                                                             <th>KETERANGAN</th>
                                                             
                                                         </thead>
-                                                        <tbody>
-                                                            @php 
-                                                             $a = 1;
-                                                            @endphp
+                                                        <tbody id="tbody">
+                                                           
                                                             <tr>
                                                                 <td class="text-center" ><i class="icon icon-plus text-success" id="tambah"></i></td>
-                                                                <td>{{$a++}}</td>
+                                                               
                                                                 <td>
                                                                     <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" onchange="option(this)" autocomplete="off">
                                                                         <option value="">Pilih</option>
@@ -155,35 +153,40 @@
 @endsection
 @section('script')
  <script type="text/javascript">
-    // var table = $('#dataTable').dataTable({
-    //     processing: true,
-    //     serverSide: true,
-    //     order: [ 0, 'asc' ],
-    //     ajax: {
-    //         url: "{{ route('Perusahaan.Jenis_Barang.api') }}",
-    //         method: 'POST'
-    //     },
-    //     columns: [
-    //         {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
-    //         {data: 'nama_barang', name: 'nama_barang'},
-    //         {data: 'harga_beli', name: 'harga_beli', render: $.fn.dataTable.render.number(',', '.', 0, '')},
-    //         {data: 'harga_jual', name: 'harga_jual', render: $.fn.dataTable.render.number(',', '.', 0, '')},
-            
-    //         {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
-    //     ]
-    // });
+    var table = $('#dataTable').dataTable({
+        processing: true,
+        serverSide: true,
+        order: [ 0, 'asc' ],
+        ajax: {
+            url: "{{ route('Perusahaan.Pesanan.api') }}",
+            method: 'POST'
+        },
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
+            {data: 'id_pesanan', name: 'id_pesanan'},
+            {data: 'jenis_pesanan', name: 'jenis_pesanan'},
+            {data: 'harga', name: 'harga'},
+            {data: 'jumlah', name: 'jumlah'},
+            {data: 'total', name: 'total'},
+            {data: 'tanggal', name: 'tanggal'},
+            {data: 'keterangan', name: 'keterangan'},
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
+        ]
+    });
 
    
 
     $(document).ready(function(){
         var i = 1;
+        var no = 1;
         $('#tambah').click(function(){
             i++;
-            $('#dinamic').append(`<tr>
-                                                                <td class="text-center" ></td>
-                                                                <td>`+ i +`</td>
+            no++;
+            $('#dinamic').append(`<tr id="trTable`+i+`">
+                                                                <td class="text-center" ><i class='icon icon-remove' id="hapus`+i+`" onclick='hapusTable(`+i+`)'></i></td>
+                                                               
                                                                 <td>
-                                                                    <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" onchange="option2(this)" autocomplete="off">
+                                                                    <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" onchange="option2(this, `+i+`)" autocomplete="off">
                                                                         <option value="">Pilih</option>
                                                                         @foreach ($barang as $item)
                                                                             <option value="{{$item->id}}">{{$item->nama_barang}}</option>
@@ -194,10 +197,10 @@
                                                                     <input type="text" name="harga[]" id="harga_`+i+`" autocomplete="off" readonly />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="jumlah[]" id="jumlah`+i+`"  autocomplete="off" />
+                                                                    <input type="text" name="jumlah[]" id="jumlah_`+i+`" onkeyup="onjumlah2(`+i+`)"  autocomplete="off" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="total[]" id="total`+i+`" autocomplete="off" />
+                                                                    <input type="text" name="total[]" id="total_`+i+`" autocomplete="off" />
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" name="keterangan[]" id="keterangan`+i+`" autocomplete="off" />    
@@ -208,6 +211,22 @@
 
         
     });
+
+    function hapusTable(i){
+        
+        var row = $("#tbody > tr").length;
+        console.log(row);
+        
+        for (let index = 2; index <= row; index++) {
+            $("#tbody  tr:eq("+index+") #cek ").html(index);
+            console.log("indek"+$("#tbody  tr:eq("+index+") ").html())
+        }
+        $("#trTable"+i).remove();
+    }
+
+    // $("#hapus"+i).click(function(){
+    //     alert("wendi");
+    // });
     
     function option(option){
         var selected = $(option).find(':selected');
@@ -238,9 +257,9 @@
     
 
 
-    var i =1;
-    function option2(option){
-        i++;
+    // var i = 1;
+    function option2(option, i){
+        // i++;
         var selected = $(option).find(':selected');
         var id = $(selected).val();
 
@@ -248,6 +267,19 @@
             console.log(data);
             $("#harga_"+i).val(data.harga_jual);
         });
+    }
+
+    function onjumlah2(i){
+        var jumlah = $("#jumlah_"+i).val();
+        console.log(jumlah);
+        var harga = $("#harga_"+i).val();
+        console.log(harga);
+        var total = jumlah * harga ;
+
+        console.log(total);
+
+        $("#total_"+i).val(total);
+        
     }
 
     

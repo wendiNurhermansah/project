@@ -5,7 +5,7 @@ namespace App\Http\Controllers\perusahaan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Jenis_pesanan;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use App\Models\JenisBarang;
 use App\Models\Pesanan;
 use PhpParser\Node\Stmt\Foreach_;
@@ -21,6 +21,36 @@ class PesananController extends Controller
     {
         $barang = JenisBarang::all();
         return view('perusahaan.pesanan', compact('barang'));
+    }
+
+    public function api(){
+        $pesanan = Jenis_pesanan::all();
+        return DataTables::of($pesanan)
+        
+
+            ->addColumn('action', function ($p) {
+                return "
+                    
+                    <a href='#' onclick='remove(" . $p->id . ")' class='text-danger' title='Hapus Role'><i class='icon-remove'></i></a>";
+            })
+
+            ->editColumn('tanggal', function($p){
+                return $p->pesanan->tanggal;
+            })
+
+            ->editColumn('id_pesanan', function($p){
+                return $p->pesanan->nama_pemesan;
+            })
+
+            ->editColumn('jenis_pesanan', function($p){
+                return $p->barang->nama_barang;
+            })
+
+            
+            
+            ->addIndexColumn()
+            ->rawColumns(['action'])
+            ->toJson();
     }
 
     /**
