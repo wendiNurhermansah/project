@@ -146,7 +146,10 @@ class PesananController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Jenis_pesanan::destroy($id);
+        return response()->json([
+            'message' => 'Data berhasil di hapus.'
+        ]);
     }
 
     public function dataBarang($id){
