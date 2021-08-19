@@ -118,4 +118,12 @@ class PesananController extends Controller
     {
         //
     }
+
+    public function dataBarang($id){
+        // dd($id);
+        $barang = JenisBarang::find($id);
+        // dd($barang);
+        
+        return $barang;
+    }
 }

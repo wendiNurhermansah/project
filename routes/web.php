@@ -57,6 +57,7 @@ Route::prefix('Perusahaan')->namespace('perusahaan')->name('Perusahaan.')->group
 
     // Pesanan
     Route::resource('Pesanan', 'PesananController');
+    Route::get('Pesanan/dataBarang/{id}', 'PesananController@dataBarang')->name('Pesanan.dataBarang');
 
 
 });

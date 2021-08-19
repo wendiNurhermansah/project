@@ -101,21 +101,21 @@
                                                                 <td class="text-center" ><i class="icon icon-plus text-success" id="tambah"></i></td>
                                                                 <td>{{$a++}}</td>
                                                                 <td>
-                                                                    <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" autocomplete="off">
+                                                                    <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" onchange="option(this)" autocomplete="off">
                                                                         <option value="">Pilih</option>
                                                                         @foreach ($barang as $item)
-                                                                            <option value="{{$item->id}}">{{$item->nama_barang}}</option>
+                                                                            <option value="{{$item->id}}" id="jenisPesanan" >{{$item->nama_barang}}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="harga[]" id="harga" autocomplete="off" />
+                                                                    <input type="text" name="harga[]" id="harga" autocomplete="off" readonly/>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="jumlah[]" id="jumlah" autocomplete="off" />
+                                                                    <input type="text" name="jumlah[]" id="jumlah"  onkeyup="onjumlah()" autocomplete="off" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="total[]" id="total" autocomplete="off" />
+                                                                    <input type="text" name="total[]" id="total" autocomplete="off" readonly/>
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" name="keterangan[]" id="keterangan" autocomplete="off" />    
@@ -183,7 +183,7 @@
                                                                 <td class="text-center" ></td>
                                                                 <td>`+ i +`</td>
                                                                 <td>
-                                                                    <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" autocomplete="off">
+                                                                    <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" onchange="option2(this)" autocomplete="off">
                                                                         <option value="">Pilih</option>
                                                                         @foreach ($barang as $item)
                                                                             <option value="{{$item->id}}">{{$item->nama_barang}}</option>
@@ -191,21 +191,71 @@
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="harga[]" id="harga" autocomplete="off" />
+                                                                    <input type="text" name="harga[]" id="harga_`+i+`" autocomplete="off" readonly />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="jumlah[]" id="jumlah" autocomplete="off" />
+                                                                    <input type="text" name="jumlah[]" id="jumlah`+i+`"  autocomplete="off" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="total[]" id="total" autocomplete="off" />
+                                                                    <input type="text" name="total[]" id="total`+i+`" autocomplete="off" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="keterangan[]" id="keterangan" autocomplete="off" />    
+                                                                    <input type="text" name="keterangan[]" id="keterangan`+i+`" autocomplete="off" />    
                                                                 </td>
                                                                 
                                                             </tr>`);
         });
+
+        
     });
+    
+    function option(option){
+        var selected = $(option).find(':selected');
+        var id = $(selected).val();
+
+        var jumlah = $("#jumlah").val();
+        console.log(jumlah);
+
+        $.get("{{ route('Perusahaan.Pesanan.dataBarang', ':id') }}".replace(':id', id), function(data){
+            console.log(data);
+            $("#harga").val(data.harga_jual);
+        });
+    }
+
+    function onjumlah(){
+        var jumlah = $("#jumlah").val();
+        console.log(jumlah);
+        var harga = $("#harga").val();
+        console.log(harga);
+        var total = jumlah * harga ;
+
+        console.log(total);
+
+        $("#total").val(total);
+        
+    }
+
+    
+
+
+    var i =1;
+    function option2(option){
+        i++;
+        var selected = $(option).find(':selected');
+        var id = $(selected).val();
+
+        $.get("{{ route('Perusahaan.Pesanan.dataBarang', ':id') }}".replace(':id', id), function(data){
+            console.log(data);
+            $("#harga_"+i).val(data.harga_jual);
+        });
+    }
+
+    
+    
+
+   
+
+   
 
     function add(){
         save_method = "add";
