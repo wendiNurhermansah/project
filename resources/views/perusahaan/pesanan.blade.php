@@ -116,7 +116,7 @@
                                                                     <input class="text-center" type="text" name="total[]" id="total" autocomplete="off" readonly/>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="keterangan[]" id="keterangan" autocomplete="off" />    
+                                                                    <input class="text-center" type="text" name="keterangan[]" id="keterangan" autocomplete="off" />    
                                                                 </td>
                                                                 
                                                             </tr>
@@ -194,16 +194,16 @@
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="harga[]" id="harga_`+i+`" autocomplete="off" readonly />
+                                                                    <input class="text-center" type="text" name="harga[]" id="harga_`+i+`" autocomplete="off" readonly />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="jumlah[]" id="jumlah_`+i+`" onkeyup="onjumlah2(`+i+`)"  autocomplete="off" />
+                                                                    <input class="text-center" type="text" name="jumlah[]" id="jumlah_`+i+`" onkeyup="onjumlah2(`+i+`)"  autocomplete="off" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="total[]" id="total_`+i+`" autocomplete="off" />
+                                                                    <input class="text-center" type="text" name="total[]" id="total_`+i+`" autocomplete="off" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="keterangan[]" id="keterangan`+i+`" autocomplete="off" />    
+                                                                    <input class="text-center" type="text" name="keterangan[]" id="keterangan`+i+`" autocomplete="off" />    
                                                                 </td>
                                                                 
                                                             </tr>`);

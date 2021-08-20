@@ -3,6 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Kecamatan;
+use App\Models\Kelurahan;
+use App\Models\Kabupaten;
+use App\Models\Provinsi;
+
 
 class Costumer extends Model
 {
