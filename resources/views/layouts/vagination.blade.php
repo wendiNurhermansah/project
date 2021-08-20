@@ -1,6 +1,6 @@
 <ul class="sidebar-menu">
     <li class="header"><strong>MAIN NAVIGATION</strong></li>
-    <li class="treeview"><a href="#">
+    <li class="treeview"><a href="{{route('dashboard')}}">
         <i class="icon icon-sailing-boat-water purple-text s-18"></i> <span>Dashboard</span>
         <i class="icon icon-angle-right s-18 pull-right"></i>
     </a>
