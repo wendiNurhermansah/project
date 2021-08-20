@@ -106,14 +106,14 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </td>
-                                                                <td>
-                                                                    <input type="text" name="harga[]" id="harga" autocomplete="off" readonly/>
+                                                                <td >
+                                                                    <input class="text-center" type="text" name="harga[]" id="harga" autocomplete="off"  readonly/>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="jumlah[]" id="jumlah"  onkeyup="onjumlah()" autocomplete="off" />
+                                                                    <input class="text-center" type="text" name="jumlah[]" id="jumlah"  onkeyup="onjumlah()" autocomplete="off" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="total[]" id="total" autocomplete="off" readonly/>
+                                                                    <input class="text-center" type="text" name="total[]" id="total" autocomplete="off" readonly/>
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" name="keterangan[]" id="keterangan" autocomplete="off" />    
@@ -212,15 +212,22 @@
         
     });
 
+    // rupiah
+    // const formatRupiah = (money) => {
+    //     return new Intl.NumberFormat('id-ID',
+    //     { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }
+    //     ).format(money);
+    // }
+
     function hapusTable(i){
         
-        var row = $("#tbody > tr").length;
-        console.log(row);
+        // var row = $("#tbody > tr").length;
+        // console.log(row);
         
-        for (let index = 2; index <= row; index++) {
-            $("#tbody  tr:eq("+index+") #cek ").html(index);
-            console.log("indek"+$("#tbody  tr:eq("+index+") ").html())
-        }
+        // for (let index = 2; index <= row; index++) {
+        //     $("#tbody  tr:eq("+index+") #cek ").html(index);
+        //     console.log("indek"+$("#tbody  tr:eq("+index+") ").html())
+        // }
         $("#trTable"+i).remove();
     }
 
@@ -233,26 +240,32 @@
         var id = $(selected).val();
 
         var jumlah = $("#jumlah").val();
-        console.log(jumlah);
+        // console.log(jumlah);
 
         $.get("{{ route('Perusahaan.Pesanan.dataBarang', ':id') }}".replace(':id', id), function(data){
-            console.log(data);
+            // console.log(data);
             $("#harga").val(data.harga_jual);
         });
     }
 
     function onjumlah(){
         var jumlah = $("#jumlah").val();
-        console.log(jumlah);
+        // console.log(jumlah);
         var harga = $("#harga").val();
-        console.log(harga);
+        // console.log(harga);
         var total = jumlah * harga ;
 
-        console.log(total);
+        // console.log(total);
 
         $("#total").val(total);
         
     }
+
+    
+
+// console.log(formatRupiah(10000));
+
+    
 
     
 
@@ -264,19 +277,19 @@
         var id = $(selected).val();
 
         $.get("{{ route('Perusahaan.Pesanan.dataBarang', ':id') }}".replace(':id', id), function(data){
-            console.log(data);
+            // console.log(data);
             $("#harga_"+i).val(data.harga_jual);
         });
     }
 
     function onjumlah2(i){
         var jumlah = $("#jumlah_"+i).val();
-        console.log(jumlah);
+        // console.log(jumlah);
         var harga = $("#harga_"+i).val();
-        console.log(harga);
+        // console.log(harga);
         var total = jumlah * harga ;
 
-        console.log(total);
+        // console.log(total);
 
         $("#total_"+i).val(total);
         
