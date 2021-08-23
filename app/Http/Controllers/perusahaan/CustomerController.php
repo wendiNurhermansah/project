@@ -132,11 +132,20 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $provinsi = Provinsi::select('id', 'n_provinsi')->get();
-        $kabupaten = kabupaten::select('id', 'n_kabupaten')->get();
-        $kecamatan = kecamatan::select('id', 'n_kecamatan')->get();
-        $kelurahan = kelurahan::select('id', 'n_kelurahan')->get();
         $customer = Costumer::find($id);
+         $provinsi = Provinsi::select('id', 'n_provinsi')->get();
+        // $kabupaten = kabupaten::select('id', 'n_kabupaten')->get();
+        // $kecamatan = kecamatan::select('id', 'n_kecamatan')->get();
+        // $kelurahan = kelurahan::select('id', 'n_kelurahan')->get();
+
+        $prov = $customer->provinsi;
+        $kab = $customer->kabupaten;
+        $kec= $customer->kecamatan;
+
+        $kabupaten = Kabupaten::where('provinsi_id', $prov)->get();
+        $kecamatan = Kecamatan::where('kabupaten_id', $kab)->get();
+        $kelurahan = Kelurahan::where('kecamatan_id', $kec)->get();
+       
         return view ('perusahaan.editCustomer', compact('provinsi','customer','kabupaten','kecamatan','kelurahan',));
     }
 
