@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="assets/img/basic/favicon.ico" type="image/x-icon">
-    <title>Paper</title>
+    <title>PERUSAHAAN</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/app.css">
     <style>
@@ -89,10 +89,8 @@
                 <img src="assets/img/basic/logo.png" alt=""/>
             </div>
             <div class="p-5">
-                <h3>Welcome Back</h3>
-                <p>Hey Soldier welcome back signin now there is lot of
-                    new stuff waiting
-                    for you</p>
+                <h3>Selamat Datang!</h3>
+                <p></p>
                     <form method="POST" action="{{ route('login') }}" autocomplete="off">
                      @csrf
                         <div class="form-group has-icon"><i class="icon icon-user"></i>
