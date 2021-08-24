@@ -165,9 +165,9 @@
             {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
             {data: 'id_pesanan', name: 'id_pesanan'},
             {data: 'jenis_pesanan', name: 'jenis_pesanan'},
-            {data: 'harga', name: 'harga'},
+            {data: 'harga', name: 'harga', render: $.fn.dataTable.render.number(',', '.', 0, '')},
             {data: 'jumlah', name: 'jumlah'},
-            {data: 'total', name: 'total'},
+            {data: 'total', name: 'total', render: $.fn.dataTable.render.number(',', '.', 0, '')},
             {data: 'tanggal', name: 'tanggal'},
             {data: 'keterangan', name: 'keterangan'},
             {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
