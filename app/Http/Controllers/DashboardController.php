@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Costumer;
+use App\Models\Jenis_pesanan;
+use App\Models\JenisBarang;
 
 class DashboardController extends Controller
 {
@@ -23,7 +26,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('Home.dashboard');
+        $customer = Costumer::count();
+        $barang = JenisBarang::count();
+        $pesanan = Jenis_pesanan::count();
+        
+        // dd($barang);
+        return view('Home.dashboard', compact('customer','barang','pesanan'));
     }
 }
 

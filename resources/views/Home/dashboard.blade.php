@@ -22,51 +22,41 @@
             {{-- COUNT --}}
             <div class="row mt-2 mb-4" style="height: 100%">
 
-                <div class="col-md-3" style="cursor:pointer">
+                <div class="col-md-4" style="cursor:pointer">
                     <div class="counter-box white r-5 p-3" style="height: 110%">
                         <div class="p-4">
                             <div class="float-right">
                                 <span class="icon icon-users  s-48"></span>
                             </div>
-                            <div class="counter-title"><strong>Jumlah Anggota</strong></div>
-                            <h5 class="sc-counter mt-3">2000</h5>
-                            <div class="counter-title">Anggota</div>
+                            <div class="counter-title"><strong>Jumlah Customer</strong></div>
+                            <h5 class="sc-counter mt-3">{{$customer}}</h5>
+                            <div class="counter-title">Customer</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3" style="cursor:pointer">
+                <div class="col-md-4" style="cursor:pointer">
                     <div class="counter-box white r-5 p-3"  style="height: 110%">
                         <div class="p-4">
                             <div class="float-right">
                                 <span class="icon icon-arrow-circle-o-up  s-48"></span>
                             </div>
-                            <div class="counter-title"><strong>Pengeluaran</strong></div>
-                            <h5 class="sc-counter mt-3">1000</h5>
+                            <div class="counter-title"><strong>Jumlah Jenis Barang</strong></div>
+                            <h5 class="sc-counter mt-3">{{$barang}}</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3" style="cursor:pointer">
+                <div class="col-md-4" style="cursor:pointer">
                     <div class="counter-box white r-5 p-3"  style="height: 110%">
                         <div class="p-4">
                             <div class="float-right">
                                 <span class="icon icon-arrow-circle-o-down  s-48"></span>
                             </div>
-                            <div class="counter-title"><strong>Pemasukan</strong></div>
-                            <h5 class="sc-counter mt-3">1000</h5>
+                            <div class="counter-title"><strong>Jumlah Pesanan</strong></div>
+                            <h5 class="sc-counter mt-3">{{$pesanan}}</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3" style="cursor:pointer">
-                    <div class="counter-box white r-5 p-3"  style="height: 110%">
-                        <div class="p-4">
-                            <div class="float-right">
-                                <span class="icon icon-money  s-48"></span>
-                            </div>
-                            <div class="counter-title"><strong>Saldo</strong></div>
-                            <h5 class="sc-counter mt-3">1000</h5
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
