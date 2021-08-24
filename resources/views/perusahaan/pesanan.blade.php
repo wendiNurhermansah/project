@@ -100,7 +100,7 @@
                                                                
                                                                 <td>
                                                                     <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" onchange="option(this)" autocomplete="off">
-                                                                        <option value="">Pilih</option>
+                                                                        <option value="">Pilih Pesanan</option>
                                                                         @foreach ($barang as $item)
                                                                             <option value="{{$item->id}}" id="jenisPesanan" >{{$item->nama_barang}}</option>
                                                                         @endforeach
@@ -187,7 +187,7 @@
                                                                
                                                                 <td>
                                                                     <select class="select2 form-control r-0 light s-12" name="jenis_pesanan[]" id="jenis_pesanan" onchange="option2(this, `+i+`)" autocomplete="off">
-                                                                        <option value="">Pilih</option>
+                                                                        <option value="">Pilih Pesanan</option>
                                                                         @foreach ($barang as $item)
                                                                             <option value="{{$item->id}}">{{$item->nama_barang}}</option>
                                                                         @endforeach
