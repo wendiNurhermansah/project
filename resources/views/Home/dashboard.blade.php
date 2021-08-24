@@ -38,7 +38,7 @@
                     <div class="counter-box white r-5 p-3"  style="height: 110%">
                         <div class="p-4">
                             <div class="float-right">
-                                <span class="icon icon-arrow-circle-o-up  s-48"></span>
+                                <span class="icon icon-newspaper s-48"></span>
                             </div>
                             <div class="counter-title"><strong>Jumlah Jenis Barang</strong></div>
                             <h5 class="sc-counter mt-3">{{$barang}}</h5>
@@ -49,7 +49,7 @@
                     <div class="counter-box white r-5 p-3"  style="height: 110%">
                         <div class="p-4">
                             <div class="float-right">
-                                <span class="icon icon-arrow-circle-o-down  s-48"></span>
+                                <span class="icon icon-th  s-48"></span>
                             </div>
                             <div class="counter-title"><strong>Jumlah Pesanan</strong></div>
                             <h5 class="sc-counter mt-3">{{$pesanan}}</h5>
