@@ -38,7 +38,7 @@ class PesananController extends Controller
         if ($transaksi != 0){
            $no = $transaksi+1;
         }else{
-           $no = $transaksi;
+           $no = $transaksi = 1;
         }
 
         $kode = $days.$month.$years.$no;

@@ -65,7 +65,7 @@
                                 <form class="needs-validation" id="form" method="POST"  enctype="multipart/form-data" novalidate>
                                     {{ method_field('POST') }}
                                     <input type="hidden" id="id" name="id"/>
-                                    <h4 id="formTitle">Tambah Data</h4><hr>
+                                    <h4 id="formTitle">Tambah Pesanan</h4><hr>
                                     <div class="form-row form-inline">
                                         <div class="col-md-12">
                                             <div class="row">
