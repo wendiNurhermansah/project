@@ -52,12 +52,12 @@ class PesananController extends Controller
     public function api(){
         $pesanan = Pesanan::all();
         return DataTables::of($pesanan)
-        
+            ->addColumn('action', function ($p) {
+                return "
+                    <a href='#' title='Print' m-5><i class='icon-print mr-1'></i></a>
+                    <a href='#' onclick='remove(" . $p->id . ")' class='text-danger' title='Hapus Role'><i class='icon-remove'></i></a>";
+            })
 
-            
-
-            
-            
             ->addIndexColumn()
             ->rawColumns(['action'])
             ->toJson();
@@ -181,7 +181,7 @@ class PesananController extends Controller
      */
     public function destroy($id)
     {
-        Jenis_pesanan::destroy($id);
+        Pesanan::destroy($id);
         return response()->json([
             'message' => 'Data berhasil di hapus.'
         ]);

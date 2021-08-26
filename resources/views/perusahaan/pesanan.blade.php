@@ -45,7 +45,7 @@
                                             <th>NAMA PESANAN</th>
                                             <th>JUMLAH</th>
                                             <th>TOTAL</th> 
-                                                                                   
+                                            <th>AKSI</th>                                   
                                         </thead>
                                         <tbody></tbody>
                                     </table>
@@ -209,7 +209,7 @@
             {data: 'nama_pemesan', name: 'nama_pemesan'},
             {data: 'total_jumlah', name: 'total_jumlah', render: $.fn.dataTable.render.number(',', '.', 0, '')},
             {data: 'total_harga', name: 'total_harga', render: $.fn.dataTable.render.number(',', '.', 0, '')},
-            
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
         ]
     });
 
