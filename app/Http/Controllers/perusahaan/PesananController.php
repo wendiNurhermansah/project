@@ -49,12 +49,18 @@ class PesananController extends Controller
         return view('perusahaan.pesanan', compact('barang','kode'));
     }
 
-    public function kode(){
-        $tanggal = date('dmy');
-        $bulan = 1;
-        // dd($tanggal);
-        $kode = $tanggal.$bulan;
-        dd($kode);
+    public function api(){
+        $pesanan = Pesanan::all();
+        return DataTables::of($pesanan)
+        
+
+            
+
+            
+            
+            ->addIndexColumn()
+            ->rawColumns(['action'])
+            ->toJson();
     }
 
     /**

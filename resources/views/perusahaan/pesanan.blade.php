@@ -44,8 +44,8 @@
                                             <th>NO TRANSAKSI</th>
                                             <th>NAMA PESANAN</th>
                                             <th>JUMLAH</th>
-                                            <th>TOTAL</th>
-                                            <th>KETERANGAN</th>                                         
+                                            <th>TOTAL</th> 
+                                                                                   
                                         </thead>
                                         <tbody></tbody>
                                     </table>
@@ -195,26 +195,23 @@
 @endsection
 @section('script')
  <script type="text/javascript">
-    // var table = $('#dataTable').dataTable({
-    //     processing: true,
-    //     serverSide: true,
-    //     order: [ 0, 'asc' ],
-    //     ajax: {
-    //         url: "{{ route('Perusahaan.Pesanan.api') }}",
-    //         method: 'POST'
-    //     },
-    //     columns: [
-    //         {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
-    //         {data: 'id_pesanan', name: 'id_pesanan'},
-    //         {data: 'jenis_pesanan', name: 'jenis_pesanan'},
-    //         {data: 'harga', name: 'harga', render: $.fn.dataTable.render.number(',', '.', 0, '')},
-    //         {data: 'jumlah', name: 'jumlah'},
-    //         {data: 'total', name: 'total', render: $.fn.dataTable.render.number(',', '.', 0, '')},
-    //         {data: 'tanggal', name: 'tanggal'},
-    //         {data: 'keterangan', name: 'keterangan'},
-    //         {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
-    //     ]
-    // });
+    var table = $('#dataTable').dataTable({
+        processing: true,
+        serverSide: true,
+        order: [ 0, 'asc' ],
+        ajax: {
+            url: "{{ route('Perusahaan.Pesanan.api') }}",
+            method: 'POST'
+        },
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
+            {data: 'no_transaksi', name: 'no_transaksi'},
+            {data: 'nama_pemesan', name: 'nama_pemesan'},
+            {data: 'total_jumlah', name: 'total_jumlah', render: $.fn.dataTable.render.number(',', '.', 0, '')},
+            {data: 'total_harga', name: 'total_harga', render: $.fn.dataTable.render.number(',', '.', 0, '')},
+            
+        ]
+    });
 
    
 
