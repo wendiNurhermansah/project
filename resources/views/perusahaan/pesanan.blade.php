@@ -41,14 +41,11 @@
                                     <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <th width="30">No</th>
-                                            <th>NAMA PEMESAN</th>
-                                            <th>JENIS PESANAN</th>
-                                            <th>HARGA</th>
+                                            <th>NO TRANSAKSI</th>
+                                            <th>NAMA PESANAN</th>
                                             <th>JUMLAH</th>
                                             <th>TOTAL</th>
-                                            <th>TANGGAL</th>
-                                            <th>KETERANGAN</th>
-                                            <th>AKSI</th>
+                                            <th>KETERANGAN</th>                                         
                                         </thead>
                                         <tbody></tbody>
                                     </table>
@@ -70,21 +67,58 @@
                                     <input type="hidden" id="id" name="id"/>
                                     <h4 id="formTitle">Tambah Data</h4><hr>
                                     <div class="form-row form-inline">
-                                        <div class="col-md-8">
-                                            <div class="form-group m-0">
-                                                <label for="nama_pemesan" class="col-form-label s-12 col-md-2">Nama Pemesan</label>
-                                                <input type="text" name="nama_pemesan" id="nama_pemesan" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="row col-md-6">
+                                                    <label for="no_transaksi" class="s-12 col-md-3 mt-3">No Transaksi</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" name="no_transaksi" id="no_transaksi" class="form-control r-0 light s-12 mt-2 " value="{{$kode}}" autocomplete="off" required/>
+                                                    </div>
+                                                                      
+                                                </div>
+                                                <div class="row col-md-6">
+                                                    <label for="tanggal" class="s-12 col-md-3 mt-3">Tanggal</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="date" name="tanggal" id="tanggal" class="form-control r-0 light s-12 mt-2 " autocomplete="off" required/>
+                                             
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="row col-md-6">
+                                                    <label for="nama_pemesan" class="s-12 col-md-3 mt-3">Nama Pemesan</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" name="nama_pemesan" id="nama_pemesan" class="form-control r-0 light s-12 mt-2 " autocomplete="off" required/>
+                                                    </div>
+                                                                      
+                                                </div>
+                                                <div class="row col-md-6">
+
+                                                </div>
+                                                   
+                                            </div>
+                                            <div class="row">
+                                                <div class="row col-md-6">
+                                                    <label for="nama_perusahaan" class="s-12 col-md-3 mt-3">Jenis Pesanan</label>
+                                                    <div class="col-sm-6">
+                                                        
+                                                    </div>
+                                                                      
+                                                </div>
+                                                <div class="row col-md-6">
+                                                    
+                                                </div>
+                                                   
+                                            </div>
+                                            
+                                            
+                                            
                                             <div class="form-group mt-3">
-                                                <label for="" class="col-form-label s-12 col-md-2">Jenis Pesanan</label>
                                                 
-                                            </div>
-                                            <div class="form-group mt-3">
-                                                <label for="" class="col-form-label s-12 col-md-2"></label>
-                                                <div class="col-md-10">
-                                                    <table id="dinamic" class="table table-striped table-bordered" style="width:100%">
+                                                <div class="col-md-12">
+                                                    <table id="dinamic" class="table table-striped table-bordered" style="width:50%">
                                                         <thead class="text-center">
-                                                            <th>Tambah</th>
+                                                            <th class="text-center"><i class="icon icon-plus text-success" id="tambah"></i></th>
                                                            
                                                             <th>JENIS PESANAN</th>
                                                             <th>HARGA</th>
@@ -95,7 +129,7 @@
                                                         </thead>
                                                         <tbody id="tbody">
                                                            
-                                                            <tr>
+                                                            <!-- <tr>
                                                                 <td class="text-center" ><i class="icon icon-plus text-success" id="tambah"></i></td>
                                                                
                                                                 <td>
@@ -119,21 +153,29 @@
                                                                     <input class="text-center" type="text" name="keterangan[]" id="keterangan" autocomplete="off" />    
                                                                 </td>
                                                                 
-                                                            </tr>
+                                                            </tr> -->
                                                         </tbody>
+                                                        <tfoot>
+                                                            <tr>
+                                                            <td colspan="3" class="text-center">Total</td>
+                                                            <td>
+                                                                <input class="text-center" type="text" name="total_jumlah" id="total_jumlah" autocomplete="off" readonly/>
+                                                            </td>
+                                                            <td>
+                                                                <input class="text-center" type="text" name="total_harga" id="total_harga" autocomplete="off" readonly/>      
+                                                            </td>
+                                                            <td>
+                                                               
+                                                            </td>
+                                                            </tr>
+                                                        </tfoot>
                                                     </table>
                                                 </div>    
                                             </div>
 
                                            
-                                            <div class="form-group mt-3">
-                                                <label for="tanggal" class="col-form-label s-12 col-md-2">Tanggal Pesanan</label>
-                                                <input type="date" name="tanggal" id="tanggal" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
-                                            </div>
-                                            <div class="form-group mt-3">
-                                                <label for="alamat" class="col-form-label s-12 col-md-2">Alamat</label>
-                                                <input type="text" name="alamat" id="alamat" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
-                                            </div>
+                                            
+                                            
                                             
                                             <div class="mt-4" style="margin-left: 17%">
                                                 <button type="submit" class="btn btn-primary btn-sm" id="action"><i class="icon-save mr-2"></i>Simpan<span id="txtAction"></span></button>
@@ -153,31 +195,31 @@
 @endsection
 @section('script')
  <script type="text/javascript">
-    var table = $('#dataTable').dataTable({
-        processing: true,
-        serverSide: true,
-        order: [ 0, 'asc' ],
-        ajax: {
-            url: "{{ route('Perusahaan.Pesanan.api') }}",
-            method: 'POST'
-        },
-        columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
-            {data: 'id_pesanan', name: 'id_pesanan'},
-            {data: 'jenis_pesanan', name: 'jenis_pesanan'},
-            {data: 'harga', name: 'harga', render: $.fn.dataTable.render.number(',', '.', 0, '')},
-            {data: 'jumlah', name: 'jumlah'},
-            {data: 'total', name: 'total', render: $.fn.dataTable.render.number(',', '.', 0, '')},
-            {data: 'tanggal', name: 'tanggal'},
-            {data: 'keterangan', name: 'keterangan'},
-            {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
-        ]
-    });
+    // var table = $('#dataTable').dataTable({
+    //     processing: true,
+    //     serverSide: true,
+    //     order: [ 0, 'asc' ],
+    //     ajax: {
+    //         url: "{{ route('Perusahaan.Pesanan.api') }}",
+    //         method: 'POST'
+    //     },
+    //     columns: [
+    //         {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, align: 'center', className: 'text-center'},
+    //         {data: 'id_pesanan', name: 'id_pesanan'},
+    //         {data: 'jenis_pesanan', name: 'jenis_pesanan'},
+    //         {data: 'harga', name: 'harga', render: $.fn.dataTable.render.number(',', '.', 0, '')},
+    //         {data: 'jumlah', name: 'jumlah'},
+    //         {data: 'total', name: 'total', render: $.fn.dataTable.render.number(',', '.', 0, '')},
+    //         {data: 'tanggal', name: 'tanggal'},
+    //         {data: 'keterangan', name: 'keterangan'},
+    //         {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
+    //     ]
+    // });
 
    
 
     $(document).ready(function(){
-        var i = 1;
+        var i = 0;
         var no = 1;
         $('#tambah').click(function(){
             i++;
@@ -221,45 +263,64 @@
 
     function hapusTable(i){
         
-        // var row = $("#tbody > tr").length;
-        // console.log(row);
-        
-        // for (let index = 2; index <= row; index++) {
-        //     $("#tbody  tr:eq("+index+") #cek ").html(index);
-        //     console.log("indek"+$("#tbody  tr:eq("+index+") ").html())
-        // }
+        //total_jumlah
         $("#trTable"+i).remove();
+        var row = $("#tbody > tr").length;
+        console.log(row);
+        total1 =0;
+        for (let index = 1; index <= row; index++) {
+            var sub = $("#jumlah_"+index).val();
+            console.log(sub);
+            var total1 = parseInt(total1) + parseInt(sub);
+            $('#total_jumlah').val(total1);
+           
+        }
+
+        //jumlah_harga
+
+        var raw = $("#tbody > tr").length;
+        console.log(raw);
+        total2 =0;
+        for (let index = 1; index <= raw; index++) {
+            var sub2 = $("#total_"+index).val();
+            console.log(sub2);
+            var total2 = parseInt(total2) + parseInt(sub2);
+            $('#total_harga').val(total2);
+           
+        }
+       
     }
 
-    // $("#hapus"+i).click(function(){
-    //     alert("wendi");
-    // });
+   
     
-    function option(option){
-        var selected = $(option).find(':selected');
-        var id = $(selected).val();
+    // function option(option){
+    //     var selected = $(option).find(':selected');
+    //     var id = $(selected).val();
 
-        var jumlah = $("#jumlah").val();
-        // console.log(jumlah);
+    //     var jumlah = $("#jumlah").val();
+    //     // console.log(jumlah);
 
-        $.get("{{ route('Perusahaan.Pesanan.dataBarang', ':id') }}".replace(':id', id), function(data){
-            // console.log(data);
-            $("#harga").val(data.harga_jual);
-        });
-    }
+    //     $.get("{{ route('Perusahaan.Pesanan.dataBarang', ':id') }}".replace(':id', id), function(data){
+    //         // console.log(data);
+    //         $("#harga").val(data.harga_jual);
+    //     });
+    // }
 
-    function onjumlah(){
-        var jumlah = $("#jumlah").val();
-        // console.log(jumlah);
-        var harga = $("#harga").val();
-        // console.log(harga);
-        var total = jumlah * harga ;
+    // function onjumlah(){
+    //     var jumlah = $("#jumlah").val();
+    //     // console.log(jumlah);
+    //     var harga = $("#harga").val();
+    //     // console.log(harga);
+    //     var total = jumlah * harga ;
 
-        // console.log(total);
+    //     // console.log(total);
+       
 
-        $("#total").val(total);
+    //     $("#total").val(total);
+    //     $("#total_jumlah").val(jumlah);
+    //     $("#total_harga").val(total);
         
-    }
+    // }
 
     
 
@@ -284,23 +345,42 @@
 
     function onjumlah2(i){
         var jumlah = $("#jumlah_"+i).val();
+        var jumlah2 = 0;
         // console.log(jumlah);
         var harga = $("#harga_"+i).val();
         // console.log(harga);
         var total = jumlah * harga ;
 
-        // console.log(total);
-
         $("#total_"+i).val(total);
+
+        //total_jumlah
+
+        var row = $("#tbody > tr").length;
+        console.log(row);
+        total1 =0;
+        for (let index = 1; index <= row; index++) {
+            var sub = $("#jumlah_"+index).val();
+            console.log(sub);
+            var total1 = parseInt(total1) + parseInt(sub);
+            $('#total_jumlah').val(total1);
+           
+        }
+
+        //jumlah_harga
+
+        var raw = $("#tbody > tr").length;
+        console.log(raw);
+        total2 =0;
+        for (let index = 1; index <= raw; index++) {
+            var sub2 = $("#total_"+index).val();
+            console.log(sub2);
+            var total2 = parseInt(total2) + parseInt(sub2);
+            $('#total_harga').val(total2);
+           
+        }
+       
         
     }
-
-    
-    
-
-   
-
-   
 
     function add(){
         save_method = "add";

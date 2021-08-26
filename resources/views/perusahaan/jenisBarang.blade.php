@@ -73,12 +73,12 @@
                                             </div>
                                             <div class="form-group mt-3">
                                                 <label for="harga_beli" class="col-form-label s-12 col-md-2">Harga Beli</label>
-                                                <input type="text" name="harga_beli" id="harga_beli" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
+                                                <input type="text" name="harga_beli" id="harga_beli" class="form-control r-0 light s-12 col-md-6" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" autocomplete="off" required/>
                                             </div>
                                            
                                             <div class="form-group mt-3">
                                                 <label for="harga_jual" class="col-form-label s-12 col-md-2">Harga Jual</label>
-                                                <input type="text" name="harga_jual" id="harga_jual" class="form-control r-0 light s-12 col-md-6" autocomplete="off" required/>
+                                                <input type="text" name="harga_jual" id="harga_jual" class="form-control r-0 light s-12 col-md-6" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" autocomplete="off" required/>
                                             </div>
                                             
                                             <div class="mt-4" style="margin-left: 17%">

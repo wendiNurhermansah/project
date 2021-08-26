@@ -59,6 +59,7 @@ Route::prefix('Perusahaan')->namespace('perusahaan')->name('Perusahaan.')->group
     Route::resource('Pesanan', 'PesananController');
     Route::get('Pesanan/dataBarang/{id}', 'PesananController@dataBarang')->name('Pesanan.dataBarang');
     Route::post('Pesanan/api', 'PesananController@api')->name('Pesanan.api');
+    Route::get('kode', 'PesananController@kode')->name('Pesanan.kode');
 
 
 });

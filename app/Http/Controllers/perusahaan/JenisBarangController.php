@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DataTables;
 use App\Models\JenisBarang;
+use Illuminate\Support\Facades\DB;
 
 class JenisBarangController extends Controller
 {
@@ -60,11 +61,13 @@ class JenisBarangController extends Controller
             'harga_jual' => 'required',
             'harga_beli' => 'required'
         ]);
+        $status = 0;
 
         $jenis_barang = new JenisBarang();
         $jenis_barang-> nama_barang = $request->nama_barang;
         $jenis_barang-> harga_beli = $request->harga_beli;
         $jenis_barang-> harga_jual = $request->harga_jual;
+        $jenis_barang-> status = $status;
         $jenis_barang->save();
 
         return response()->json([
@@ -136,7 +139,18 @@ class JenisBarangController extends Controller
      */
     public function destroy($id)
     {
-        JenisBarang::destroy($id);
+        
+
+        $barang = JenisBarang::find($id);
+        if($barang->status != 1){
+            JenisBarang::destroy($id);
+        }
+        
+
+        
+        
+      
+       
         return response()->json([
             'massage' => 'data berhasil di hapus.'
         ]);
