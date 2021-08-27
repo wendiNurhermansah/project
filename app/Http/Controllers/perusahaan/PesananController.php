@@ -9,6 +9,7 @@ use Yajra\DataTables\DataTables;
 use App\Models\JenisBarang;
 use App\Models\Pesanan;
 use Carbon\Carbon;
+use PDF;
 
 
 
@@ -54,7 +55,7 @@ class PesananController extends Controller
         return DataTables::of($pesanan)
             ->addColumn('action', function ($p) {
                 return "
-                    <a href='#' title='Print' m-5><i class='icon-print mr-1'></i></a>
+                    <a href='" . route( 'Perusahaan.Pesanan.cetak_pdf', $p->id) . "' title='Print' m-5><i class='icon-print mr-1'></i></a>
                     <a href='#' onclick='remove(" . $p->id . ")' class='text-danger' title='Hapus Role'><i class='icon-remove'></i></a>";
             })
 
@@ -193,5 +194,22 @@ class PesananController extends Controller
         // dd($barang);
         
         return $barang;
+    }
+
+    public function pdf(){
+        $jenis_pesanan = Jenis_pesanan::all();
+        $pesanan = Pesanan::all();
+        return view('Pdf.cetak_pdf', compact('jenis_pesanan','pesanan'));
+    }
+
+    public function cetak_pdf($id){
+        $pesanan = Pesanan::findOrFail($id);
+        $jenis_pesanan = Jenis_pesanan::with('barang')->where('id_pesanan', $id)->get();
+
+       
+        // dd($jenis_pesanan);
+        // return view('Pdf.cetak_pdf', compact('jenis_pesanan','pesanan'));
+        $pdf = PDF::loadview('Pdf.cetak_pdf',['pesanan'=>$pesanan,'jenis_pesanan'=>$jenis_pesanan]);
+	    return $pdf->stream();
     }
 }

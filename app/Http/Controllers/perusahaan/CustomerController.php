@@ -9,7 +9,7 @@ use App\Models\Provinsi;
 use App\Models\Kabupaten;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
 class CustomerController extends Controller
 {
