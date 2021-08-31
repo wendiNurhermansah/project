@@ -56,6 +56,7 @@ class PesananController extends Controller
             ->addColumn('action', function ($p) {
                 return "
                     <a href='" . route( 'Perusahaan.Pesanan.cetak_pdf', $p->id) . "' title='Print' m-5><i class='icon-print mr-1'></i></a>
+                    <a href='" . route( 'Perusahaan.Pesanan.edit', $p->id) . "' class='text-success p-2' title='Edit Pesanan' m-5><i class='icon-pencil mr-1'></i></a>
                     <a href='#' onclick='remove(" . $p->id . ")' class='text-danger' title='Hapus Role'><i class='icon-remove'></i></a>";
             })
 
@@ -123,16 +124,12 @@ class PesananController extends Controller
 
         $jb = JenisBarang::findOrFail($jenis_pesanan->jenis_pesanan);
         $jb->update(['status' => 1]);
-        // dd($jenis_pesanan);
+       
            
         
         }
 
        
-        // $a = 1;
-        // $jb->update([
-        //     'status' => $a,
-        // ]);
         
 
         return response()->json([
@@ -159,7 +156,35 @@ class PesananController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pesanan = Pesanan::findOrFail($id);
+        $jenis_pesanan = Jenis_pesanan::with('barang')->where('id_pesanan', $id)->get();
+
+        $date = Carbon::now();
+        $days = $date->day;
+        $month = $date->month;
+        $years = $date->year;
+       
+        // dd($no+ 1);
+
+        $transaksi = Pesanan::whereRaw('extract(month from tanggal) = ?', [$month])->count();
+        // dd($transaksi);
+        
+
+        if ($transaksi != 0){
+           $no = $transaksi+1;
+        }else{
+           $no = $transaksi = 1;
+        }
+
+        $kode = $days.$month.$years.$no;
+        
+        // dd($kode);
+       
+        $barang = JenisBarang::all();
+
+       
+        // dd($jenis_pesanan);
+        return view('perusahaan.editpesanan', compact('jenis_pesanan','pesanan','kode', 'barang','id'));
     }
 
     /**
