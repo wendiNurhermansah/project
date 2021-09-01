@@ -239,7 +239,7 @@
                                                                     <input class="text-center" type="text" name="jumlah[]" id="jumlah_`+i+`" onkeyup="onjumlah2(`+i+`)"  autocomplete="off" />
                                                                 </td>
                                                                 <td>
-                                                                    <input class="text-center" type="text" name="total[]" id="total_`+i+`" autocomplete="off" />
+                                                                    <input class="text-center" type="text" name="total[]" id="total_`+i+`" autocomplete="off" readonly />
                                                                 </td>
                                                                 <td>
                                                                     <input class="text-center" type="text" name="keterangan[]" id="keterangan`+i+`" autocomplete="off" />    
